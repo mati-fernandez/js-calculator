@@ -3,7 +3,9 @@ import './App.css';
 
 function App() {
   const [display, setDisplay] = useState('0');
+  const [lastWasEquals, setLastWasEquals] = useState(false);
   console.log('Display state', display);
+  console.log('Last was equals', lastWasEquals);
 
   const handleClear = () => {
     setDisplay('0');
@@ -18,13 +20,20 @@ function App() {
 
   const handleNumber = (e) => {
     const value = e.target.textContent;
-    setDisplay((prevDisplay) => {
-      if (prevDisplay === '0') return value;
-      return display + value;
-    });
+    if (lastWasEquals) {
+      setLastWasEquals(false);
+      console.log(value);
+      setDisplay(value);
+    } else {
+      setDisplay((prevDisplay) => {
+        if (prevDisplay === '0') return value;
+        return display + value;
+      });
+    }
   };
 
   const handleOperator = (e) => {
+    setLastWasEquals(false);
     const value = e.target.textContent;
     setDisplay((prevDisplay) => {
       if (/[/*\-+]$/.test(prevDisplay)) {
@@ -42,6 +51,7 @@ function App() {
   const handleEquals = () => {
     if (/[.\-/*+]$/.test(display)) return;
     setDisplay(String(eval(display)));
+    setLastWasEquals(true);
   };
 
   const handleDecimal = () => {
