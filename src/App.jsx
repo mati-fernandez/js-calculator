@@ -28,7 +28,11 @@ function App() {
     const value = e.target.textContent;
     setDisplay((prevDisplay) => {
       if (/[/*\-+]$/.test(prevDisplay)) {
-        return prevDisplay.slice(0, -1) + value;
+        if (value === '-' && /[0-9]/.test(prevDisplay[prevDisplay.length - 2]))
+          return prevDisplay + value;
+        if (/[.\-/*+]{2}$/.test(prevDisplay)) {
+          return prevDisplay.slice(0, -2) + value;
+        } else return prevDisplay.slice(0, -1) + value;
       } else {
         return prevDisplay + value;
       }
