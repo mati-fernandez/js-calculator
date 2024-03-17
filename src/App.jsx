@@ -3,6 +3,7 @@ import './App.css';
 
 function App() {
   const [display, setDisplay] = useState('0');
+  console.log('Display state', display);
 
   const handleClick = (e) => {
     let value = e.target.textContent;
@@ -11,31 +12,31 @@ function App() {
     } else if (/[0-9]/.test(value)) {
       setDisplay((prevDisplay) => {
         if (prevDisplay === '0') return value;
-        setDisplay(display + value);
+        return display + value;
       });
     } else if (/[/*\-+]/.test(value)) {
       setDisplay((prevDisplay) => {
         if (/[/*\-+]$/.test(prevDisplay)) {
-          value = prevDisplay.slice(0, -1) + value;
-          console.log(value);
-          setDisplay(value);
+          return prevDisplay.slice(0, -1) + value;
         } else {
-          setDisplay(prevDisplay + value);
+          return prevDisplay + value;
         }
       });
     } else if (value === '=') {
-      setDisplay(eval(display));
+      setDisplay(String(eval(display)));
     }
   };
 
   return (
     <div className="App">
+      <h1>JS Calculator</h1>
       <div className="calculator">
-        <div id="display" className="row">
-          {display}
-        </div>
-        <div onClick={handleClick} id="clear" className="row">
+        <div id="display">{display}</div>
+        <div onClick={handleClick} id="clear">
           AC
+        </div>
+        <div onClick={handleClick} id="clear-one">
+          C
         </div>
         <div onClick={handleClick} id="divide" className="operator">
           /
