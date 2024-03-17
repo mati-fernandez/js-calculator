@@ -5,7 +5,7 @@ function App() {
   const [display, setDisplay] = useState('0');
 
   const handleClick = (e) => {
-    const value = e.target.textContent;
+    let value = e.target.textContent;
     if (value === 'AC') {
       setDisplay('0');
     } else if (/[0-9]/.test(value)) {
@@ -13,6 +13,18 @@ function App() {
         if (prevDisplay === '0') return value;
         setDisplay(display + value);
       });
+    } else if (/[/*\-+]/.test(value)) {
+      setDisplay((prevDisplay) => {
+        if (/[/*\-+]$/.test(prevDisplay)) {
+          value = prevDisplay.slice(0, -1) + value;
+          console.log(value);
+          setDisplay(value);
+        } else {
+          setDisplay(prevDisplay + value);
+        }
+      });
+    } else if (value === '=') {
+      setDisplay(eval(display));
     }
   };
 
