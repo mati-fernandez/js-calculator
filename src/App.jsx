@@ -22,57 +22,57 @@ function App() {
         <div id="display" className="row">
           {display}
         </div>
-        <button onClick={handleClick} id="clear" className="row">
+        <div onClick={handleClick} id="clear" className="row">
           AC
-        </button>
-        <button onClick={handleClick} id="divide">
+        </div>
+        <div onClick={handleClick} id="divide" className="operator">
           /
-        </button>
-        <button onClick={handleClick} id="multiply">
+        </div>
+        <div onClick={handleClick} id="multiply" className="operator">
           *
-        </button>
-        <button onClick={handleClick} id="seven">
+        </div>
+        <div onClick={handleClick} id="seven" className="number">
           7
-        </button>
-        <button onClick={handleClick} id="eight">
+        </div>
+        <div onClick={handleClick} id="eight" className="number">
           8
-        </button>
-        <button onClick={handleClick} id="nine">
+        </div>
+        <div onClick={handleClick} id="nine" className="number">
           9
-        </button>
-        <button onClick={handleClick} id="subtract">
+        </div>
+        <div onClick={handleClick} id="subtract" className="operator">
           -
-        </button>
-        <button onClick={handleClick} id="four">
+        </div>
+        <div onClick={handleClick} id="four" className="number">
           4
-        </button>
-        <button onClick={handleClick} id="five">
+        </div>
+        <div onClick={handleClick} id="five" className="number">
           5
-        </button>
-        <button onClick={handleClick} id="six">
+        </div>
+        <div onClick={handleClick} id="six" className="number">
           6
-        </button>
-        <button onClick={handleClick} id="add">
+        </div>
+        <div onClick={handleClick} id="add" className="operator">
           +
-        </button>
-        <button onClick={handleClick} id="one">
+        </div>
+        <div onClick={handleClick} id="one" className="number">
           1
-        </button>
-        <button onClick={handleClick} id="two">
+        </div>
+        <div onClick={handleClick} id="two" className="number">
           2
-        </button>
-        <button onClick={handleClick} id="three">
+        </div>
+        <div onClick={handleClick} id="three" className="number">
           3
-        </button>
-        <button onClick={handleClick} id="equals">
+        </div>
+        <div onClick={handleClick} id="equals">
           =
-        </button>
-        <button onClick={handleClick} id="zero">
+        </div>
+        <div onClick={handleClick} id="zero" className="number">
           0
-        </button>
-        <button onClick={handleClick} id="decimal">
+        </div>
+        <div onClick={handleClick} id="decimal" className="number">
           .
-        </button>
+        </div>
       </div>
     </div>
   );
