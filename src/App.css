@@ -34,16 +34,15 @@ h1 {
 }
 
 .calculator > *:not(#display) {
-  padding: 23px 30px;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
   font-size: x-large;
   border: 1px solid;
 }
 
 #clear,
 #clear-one {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
   background-color: #c78484;
   text-align: center;
   border: 1px solid;

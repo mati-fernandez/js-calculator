@@ -9,6 +9,11 @@ function App() {
     let value = e.target.textContent;
     if (value === 'AC') {
       setDisplay('0');
+    } else if (value === 'C') {
+      setDisplay((prevDisplay) => {
+        if (prevDisplay.length === 1) return '0';
+        return prevDisplay.slice(0, -1);
+      });
     } else if (/[0-9]/.test(value)) {
       setDisplay((prevDisplay) => {
         if (prevDisplay === '0') return value;
