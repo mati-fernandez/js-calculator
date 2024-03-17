@@ -36,6 +36,7 @@ function App() {
   };
 
   const handleEquals = () => {
+    if (/[.\-/*+]$/.test(display)) return;
     setDisplay(String(eval(display)));
   };
 
