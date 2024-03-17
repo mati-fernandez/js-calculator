@@ -12,13 +12,14 @@ body {
 h1 {
   position: absolute;
   color: #ffffff;
-  margin-top: 120px;
+  margin-top: 100px;
 }
 
 .calculator {
-  margin-top: 200px;
+  margin-top: 175px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 75px);
+  grid-template-rows: repeat(6, 75px);
 }
 
 #display {
@@ -26,8 +27,8 @@ h1 {
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
-  height: 50px;
-  font-size: x-large;
+  height: 75px;
+  font-size: xx-large;
   grid-column: 1 / -1;
   background-color: #ffffff;
   border: 1px solid rgb(0, 0, 0);
@@ -36,20 +37,23 @@ h1 {
 .calculator > *:not(#display) {
   display: flex;
   justify-content: center;
-  padding: 20px;
+  align-items: center;
   font-size: x-large;
-  border: 1px solid;
+  border: 1px inset;
 }
 
 #clear,
 #clear-one {
   background-color: #c78484;
   text-align: center;
-  border: 1px solid;
 }
 #clear:hover,
 #clear-one:hover {
   background-color: #de9696;
+}
+#clear:active,
+#clear-one:active {
+  background-color: #c78484;
 }
 
 .operator {
@@ -58,12 +62,19 @@ h1 {
 .operator:hover {
   background-color: rgb(157, 157, 157);
 }
+.operator:active {
+  background-color: gray;
+}
 
 .number {
   background-color: #9d9d9d;
 }
 .number:hover {
   background-color: #b3b3b3;
+}
+.number:active {
+  background-color: #9d9d9d;
+  border: 1px solid black;
 }
 
 #equals {
@@ -78,6 +89,9 @@ h1 {
 }
 #equals:hover {
   background-color: rgb(126, 147, 224);
+}
+#equals:active {
+  background-color: rgb(99, 121, 202);
 }
 
 #zero {
