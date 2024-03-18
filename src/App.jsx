@@ -55,7 +55,8 @@ function App() {
   };
 
   const handleDecimal = () => {
-    //
+    if (/(\.$|[-/*+]$|\d+\.\d+$)/.test(display)) return;
+    setDisplay(display + '.');
   };
 
   return (
