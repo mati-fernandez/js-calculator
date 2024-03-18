@@ -21,9 +21,14 @@ function App() {
   const handleNumber = (e) => {
     const value = e.target.textContent;
     if (lastWasEquals) {
-      setLastWasEquals(false);
+      setDisplay((prevDisplay) => {
+        setLastWasEquals(false);
+        if (/\./.test(prevDisplay)) {
+          return prevDisplay + value;
+        }
+        return value;
+      });
       console.log(value);
-      setDisplay(value);
     } else {
       setDisplay((prevDisplay) => {
         if (prevDisplay === '0') return value;
