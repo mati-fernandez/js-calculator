@@ -65,12 +65,16 @@ function App() {
 
   const handleDecimal = () => {
     setDisplay((prevDisplay) => {
-      if (/[.\-/*+]{2}$/.test(prevDisplay)) {
+      if (/(?<!\.\d+)[-*/+]{2}$/.test(prevDisplay)) {
+        console.log('Primer caso');
         return prevDisplay.slice(0, -2) + '.';
-      } else if (/[-/*+.]$/.test(prevDisplay)) {
+      } else if (/(?<!\.\d+[-/*+]*)[-*/+]$/.test(prevDisplay)) {
+        console.log('Segundo caso');
         return prevDisplay.slice(0, -1) + '.';
-      } else if (/\d+\.\d+$/.test(display)) return prevDisplay;
-      return prevDisplay + '.';
+      } else if (/(\d+\.\d+$|[-*/+.]$)/.test(prevDisplay)) {
+        console.log('Tercer caso');
+        return prevDisplay;
+      } else return prevDisplay + '.';
     });
   };
 
