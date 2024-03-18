@@ -36,8 +36,12 @@ function App() {
     setLastWasEquals(false);
     const value = e.target.textContent;
     setDisplay((prevDisplay) => {
-      if (/[/*\-+]$/.test(prevDisplay)) {
-        if (value === '-' && /[0-9]/.test(prevDisplay[prevDisplay.length - 2]))
+      if (/[-/*+.]$/.test(prevDisplay)) {
+        if (
+          value === '-' &&
+          /[0-9]/.test(prevDisplay[prevDisplay.length - 2]) &&
+          /[^-.]/.test(prevDisplay[prevDisplay.length - 1])
+        )
           return prevDisplay + value;
         if (/[.\-/*+]{2}$/.test(prevDisplay)) {
           return prevDisplay.slice(0, -2) + value;
@@ -55,8 +59,14 @@ function App() {
   };
 
   const handleDecimal = () => {
-    if (/(\.$|[-/*+]$|\d+\.\d+$)/.test(display)) return;
-    setDisplay(display + '.');
+    setDisplay((prevDisplay) => {
+      if (/[.\-/*+]{2}$/.test(prevDisplay)) {
+        return prevDisplay.slice(0, -2) + '.';
+      } else if (/[-/*+.]$/.test(prevDisplay)) {
+        return prevDisplay.slice(0, -1) + '.';
+      } else if (/\d+\.\d+$/.test(display)) return prevDisplay;
+      return prevDisplay + '.';
+    });
   };
 
   return (
