@@ -7,19 +7,24 @@ body {
   justify-content: center;
   position: relative;
   user-select: none;
+  height: 90vh;
 }
 
 h1 {
   position: absolute;
   color: #ffffff;
-  margin-top: 100px;
+  margin-top: 7vh;
 }
 
 .calculator {
-  margin-top: 175px;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: grid;
-  grid-template-columns: repeat(4, 75px);
-  grid-template-rows: repeat(6, 75px);
+  grid-template-columns: repeat(4, 11vh);
+  grid-template-rows: repeat(6, 11vh);
+  justify-content: center;
 }
 
 #display {
